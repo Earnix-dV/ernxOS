@@ -1,0 +1,69 @@
+# Math Challenge Game - ERNXscript
+# Answer simple math questions and score points
+
+var score = 0
+var questions = 5
+var correct = 0
+
+print "================================="
+print "   MATH CHALLENGE"
+print "================================="
+print ""
+print "Answer 5 simple math questions"
+print "Get them right to earn points!"
+print ""
+
+var q = 1
+while q <= questions
+    print "Question "
+    print q
+    print ": "
+
+    var num1 = random(10) + 1
+    var num2 = random(10) + 1
+    var answer = num1 + num2
+
+    print num1
+    print " + "
+    print num2
+    print " = ? "
+
+    var user_answer = input
+
+    if user_answer == answer
+        print "CORRECT!"
+        correct = correct + 1
+        score = score + 10
+        shell "beep 880"
+    end
+
+    if user_answer != answer
+        print "WRONG! The answer was "
+        print answer
+        shell "beep 220"
+    end
+
+    print ""
+    q = q + 1
+end
+
+print "================================="
+print "FINAL SCORE:"
+print "Correct: "
+print correct
+print " out of "
+print questions
+print "Points: "
+print score
+print "================================="
+
+if score >= 50
+    print "Excellent! You're a math master!"
+    shell "beep 880"
+    shell "beep 880"
+end
+
+if score < 50
+    print "Good try! Practice makes perfect!"
+    shell "beep 440"
+end

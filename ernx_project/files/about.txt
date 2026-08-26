@@ -1,0 +1,1 @@
+This OS reads files from an initrd loaded by GRUB.

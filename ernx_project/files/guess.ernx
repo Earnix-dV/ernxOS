@@ -1,0 +1,60 @@
+# Guess the Number Game - ERNXscript
+# Guess the secret number between 1 and 100
+
+var secret = random(100) + 1
+var guess = 0
+var tries = 0
+var max_tries = 7
+
+print "================================="
+print "   GUESS THE NUMBER GAME"
+print "================================="
+print ""
+print "I am thinking of a number between 1 and 100"
+print "You have 7 tries to guess it!"
+print ""
+
+while tries < max_tries
+    print "Try "
+    print tries + 1
+    print " out of "
+    print max_tries
+    print " - Enter your guess: "
+
+    guess = input
+
+    tries = tries + 1
+
+    if guess == secret
+        print "    CORRECT! You won!"
+        print "    You found it in "
+        print tries
+        print " tries!"
+        shell "beep 880"
+        shell "beep 880"
+        shell "beep 880"
+        break
+    end
+
+    if guess < secret
+        print "    Too low! Try higher."
+        shell "beep 220"
+    end
+
+    if guess > secret
+        print "    Too high! Try lower."
+        shell "beep 220"
+    end
+end
+
+if tries == max_tries
+    if guess != secret
+        print "    GAME OVER! You ran out of tries."
+        print "    The number was: "
+        print secret
+        shell "beep 110"
+    end
+end
+
+print ""
+print "Thanks for playing!"

@@ -1,0 +1,82 @@
+# Simple Dice Game - ERNXscript
+# Roll dice and try to get the highest number!
+
+var money = 100
+var round = 1
+var max_rounds = 5
+
+print "================================="
+print "   DICE ROLLING GAME"
+print "================================="
+print ""
+print "Start with 100 points"
+print "Roll 5 times and try to maximize!"
+print ""
+
+while round <= max_rounds
+    print "Round "
+    print round
+    print " - Your balance: "
+    print money
+    print " - Roll? (press beep to continue)"
+
+    shell "beep 440"
+
+    var roll = random(6) + 1
+
+    print "You rolled: "
+    print roll
+    print ""
+
+    if roll > 4
+        var win = roll * 10
+        money = money + win
+        print "WIN! +  "
+        print win
+        print " points!"
+        shell "beep 880"
+    end
+
+    if roll <= 4
+        var loss = 5
+        money = money - loss
+        print "LOSE! - "
+        print loss
+        print " points"
+        shell "beep 220"
+    end
+
+    if money <= 0
+        print "BANKRUPT! Game Over!"
+        money = 0
+        break
+    end
+
+    print ""
+    round = round + 1
+end
+
+print "================================="
+print "FINAL BALANCE: "
+print money
+print " points"
+print "================================="
+
+if money > 100
+    print "You won! Profit: "
+    print money - 100
+    shell "beep 880"
+    shell "beep 880"
+end
+
+if money == 100
+    print "You broke even! Try again!"
+    shell "beep 440"
+end
+
+if money < 100
+    print "You lost "
+    print 100 - money
+    print " points. Better luck next time!"
+    shell "beep 220"
+end
